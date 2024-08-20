@@ -10,11 +10,14 @@ export async function GET(request: Request) {
     inputs: {},
     query: `I want to know about ${term}`,
     response_mode: "blocking",
-    user: "abc-123",
+    user: "ap-assistant",
   });
 
   var requestOptions = {
     method: "POST",
+    next: {
+      revalidate: 60 * 60 * 24,
+    },
     headers: myHeaders,
     body: raw,
     redirect: "follow" as RequestRedirect,

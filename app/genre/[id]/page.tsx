@@ -24,7 +24,7 @@ async function GenrePage({
         {/* <AIAzureSuggestion term={genre} /> */}
         {/* <AISuggestion term={genre} /> */}
         <AIGenreSuggestion genre={genre}/>
-        <MoviesCarousel title={`Genre`} movies={movies} isVertical />
+        <MoviesCarousel title={`Genre`} videos={movies} isVertical />
       </div>
     </div>
   );

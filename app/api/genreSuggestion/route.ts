@@ -1,18 +1,55 @@
+// export async function GET(request: Request) {
+//   const { searchParams } = new URL(request.url);
+//   const genre = searchParams.get("genre");
+
+import next from "next";
+
+//   const res = await fetch(
+//     `https://ap-video-library.azurewebsites.net/api/getaisuggestion?genre=${genre}`,
+//     {
+//       method: "GET",
+//       next: {
+//         revalidate: 60 * 60 * 24,
+//       },
+//     }
+//   );
+
+//   const message = await res.text();
+
+//   return Response.json({ message });
+// }
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const genre = searchParams.get("genre");
 
-  const res = await fetch(
-    `https://ap-video-library.azurewebsites.net/api/getaisuggestion?genre=${genre}`,
-    {
-      method: "GET",
-      next: {
-        revalidate: 60 * 60 * 24,
-      },
-    }
-  );
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer app-AMO5ZtcAdfihrahKMFYOEAbV");
+  myHeaders.append("Content-Type", "application/json");
 
-  const message = await res.text();
+  var raw = JSON.stringify({
+    inputs: {},
+    query: `I want to know about ${genre}`,
+    response_mode: "blocking",
+    user: "ap-assistant",
+  });
+
+  var requestOptions = {
+    method: "POST",
+    next: {
+      revalidate: 60 * 60 * 24,
+    },
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow" as RequestRedirect,
+  };
+
+  const res = await fetch(
+    "http://74.225.255.251/v1/chat-messages",
+    requestOptions
+  );
+  const jsonResponse = await res.json();
+  const message = jsonResponse.answer;
+  console.log(message);
 
   return Response.json({ message });
 }
