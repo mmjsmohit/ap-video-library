@@ -15,10 +15,10 @@ function CarouselBanner({ data }: { data: VideoData[] }) {
 
   return (
     <div
-      className="overflow-hidden lg:-mt-40 relative cursor-pointer"
+      className="overflow-hidden lg:-mt-40 pb-6 relative cursor-pointer"
       ref={emblaRef}
     >
-      <div className="flex">
+      <div className="flex ">
         {data.map((video) => (
           <div key={video.videoid} className="flex-full min-w-0 relative">
             <Image
@@ -30,11 +30,11 @@ function CarouselBanner({ data }: { data: VideoData[] }) {
               className="blur-sm"
             />
 
-            <div className="hidden lg:inline absolute mt-0 top-0 pt-40 xl:pt-52 left-0 lg:mt-40 bg-transparent z-20 h-full w-full bg-gradient-to-r from-gray-900/90 via-transparent to-transparent p-10 space-y-5 text-white ">
-              <h2 className="text-5xl font-bold max-w-xl z-50">
+            <div className="lg:inline absolute mt-0 top-0 pt-40 xl:pt-52 left-0 lg:mt-40 bg-transparent z-20 h-full w-full bg-gradient-to-r from-gray-900/90 via-transparent to-transparent p-10 space-y-5 text-white ">
+              <h2 className="text-2xl lg:text-5xl font-bold max-w-xl z-50">
                 {video.title}
               </h2>
-              <p className="max-w-xl line-clamp-3">{video.description}</p>
+              <p className="lg:text-2xl max-w-xl line-clamp-3">{video.description}</p>
             </div>
           </div>
         ))}
