@@ -18,6 +18,7 @@ export async function getAISuggestion(
   context.log(`Http function processed request for url "${request.url}"`);
 
   const term = request.query.get("term");
+
   const completion = await openai.chat.completions.create({
     messages: [
       {

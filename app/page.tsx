@@ -6,7 +6,7 @@ import Image from "next/image";
 
 
 export default async function Home() {
-  const upcomingMovies = await getUpcomingMovies();
+  const videos1 = await getUpcomingMovies();
   const topRatedMovies = await getTopRatedMovies();
   const popularMovies = await getPopularMovies();
   return (
@@ -14,9 +14,9 @@ export default async function Home() {
       <CarouselBannerWrapper/>
 
       <div className="flex flex-col space-y-2 xl:-mt-48">
-        <MoviesCarousel movies={upcomingMovies} title="Upcoming"/>
-        <MoviesCarousel movies={topRatedMovies} title="Top Rated" />
-        <MoviesCarousel movies={popularMovies} title="Popular"/>
+        <MoviesCarousel videos={videos1} title="Karma "/>
+        <MoviesCarousel videos={topRatedMovies} title="Veganism 🌳" />
+        <MoviesCarousel videos={popularMovies} title="Advait 🪔"/>
       </div>
     </main>
   );
