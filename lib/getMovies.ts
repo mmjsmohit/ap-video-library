@@ -1,4 +1,4 @@
-import { SearchResults, YoutubeResponse } from "@/typings";
+import { SearchResults, VideoData, YoutubeResponse } from "@/typings";
 import { createClient } from "@/utils/supabase/server";
 
 async function fetchFromTMDB(url: URL, cacheTime?: number) {
@@ -33,6 +33,22 @@ export async function getDiscoverMovies(id?: string, keywords?: string) {
 
   // const data = await fetchFromTMDB(url);
   return data.data;
+}
+
+export async function getVideoDetails(id: string) {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("youtube_videos")
+    .select("*")
+    .eq("videoid", id)
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+  console.log(data);
+
+  return data as VideoData;
 }
 
 export async function getSearchedMovies(term: string) {

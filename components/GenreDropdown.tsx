@@ -28,7 +28,7 @@ import { createClient } from "@/utils/supabase/server";
     
     // const response = await fetch(url.toString(), options);
     const data = (await supabase.from('categories').select('*')) as Genres ;
-    console.log(data);
+    // console.log(data);
     return (
       <DropdownMenu>
         <DropdownMenuTrigger className="text-white flex justify-center items-center">
