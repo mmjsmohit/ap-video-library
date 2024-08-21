@@ -5,17 +5,20 @@ import Autoplay from "embla-carousel-autoplay";
 import { Movie, VideoData } from "@/typings";
 import Image from "next/image";
 import getImagePath from "@/lib/getImagePath";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
-Autoplay.globalOptions = { delay: 8000 };
+Autoplay.globalOptions = { delay: 8000, };
 
 function CarouselBanner({ data }: { data: VideoData[] }) {
-  const [emblaRef] = useEmblaCarousel({ loop: true, duration: 100 }, [
+  const [emblaRef] = useEmblaCarousel({ loop: true, duration: 100, }, [
     Autoplay(),
+    
   ]);
 
   return (
     <div
-      className="overflow-hidden lg:-mt-40 pb-6 relative cursor-pointer"
+      className="overflow-hidden lg:-mt-40 pb-6 relative"
       ref={emblaRef}
     >
       <div className="flex ">
@@ -35,6 +38,11 @@ function CarouselBanner({ data }: { data: VideoData[] }) {
                 {video.title}
               </h2>
               <p className="lg:text-2xl max-w-xl line-clamp-3">{video.description}</p>
+              <Link href={`/video/${video.videoid}`} passHref className="hidden xl:visible">
+                <Button className="mt-4 px-6 py-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition duration-200">
+                  Watch Now
+                </Button>
+              </Link>
             </div>
           </div>
         ))}
