@@ -41,14 +41,14 @@ export async function getVideoDetails(id: string) {
     .from("youtube_videos")
     .select("*")
     .eq("videoid", id)
-    .single();
+    .limit(1);
 
   if (error) {
     throw new Error(error.message);
   }
   console.log(data);
 
-  return data as VideoData;
+  return data[0];
 }
 
 export async function getSearchedMovies(term: string) {
@@ -77,7 +77,7 @@ export async function getSearchedMovies(term: string) {
   const data = (await supabase
     .from("youtube_videos")
     .select("*")
-    .textSearch("title", term)) as YoutubeResponse;
+    .textSearch("snippet_title", term)) as YoutubeResponse;
 
   return data.data;
 }

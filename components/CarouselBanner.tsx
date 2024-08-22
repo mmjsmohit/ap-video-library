@@ -26,7 +26,7 @@ function CarouselBanner({ data }: { data: VideoData[] }) {
           <div key={video.videoid} className="flex-full min-w-0 relative">
             <Image
               key={video.videoid}
-              src={video.thumbnail_high_url}
+              src={video.snippet_thumbnails_standard_url}
               alt=""
               width={1920}
               height={1080}
@@ -35,9 +35,9 @@ function CarouselBanner({ data }: { data: VideoData[] }) {
 
             <div className="lg:inline absolute mt-0 top-0 pt-40 xl:pt-52 left-0 lg:mt-40 bg-transparent z-20 h-full w-full bg-gradient-to-r from-gray-900/90 via-transparent to-transparent p-10 space-y-5 text-white ">
               <h2 className="text-2xl lg:text-5xl font-bold max-w-xl z-50">
-                {video.title}
+                {video.snippet_title}
               </h2>
-              <p className="lg:text-2xl max-w-xl line-clamp-3">{video.description}</p>
+              <p className="lg:text-2xl max-w-xl line-clamp-3">{video.snippet_description}</p>
               <Link href={`/video/${video.videoid}`} passHref className="hidden xl:visible">
                 <Button className="mt-4 px-6 py-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition duration-200">
                   Watch Now

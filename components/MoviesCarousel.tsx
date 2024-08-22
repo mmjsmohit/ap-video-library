@@ -27,10 +27,10 @@ function MoviesCarousel({ title, videos, isVertical }: Props) {
                 <MovieCard movie={video} />
                 <div className="max-w-2xl">
                   <p className="font-bold">
-                    {video.title} ({video.publishtime?.split("-")[0]})
+                    {video.snippet_title} ({video.snippet_publishedat?.split("-")[0]})
                   </p>
                   <hr className="mb-3" />
-                  <p className="">{video.description}</p>
+                  <p className="">{video.snippet_description}</p>
                 </div>
               </div>
             ))
