@@ -4,7 +4,7 @@ import React from 'react'
 import { ThemeToggler } from './ThemeToggler'
 import SearchInput from './SearchInput'
 import GenreDropdown from './GenreDropdown'
-
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from '@radix-ui/react-navigation-menu'
 function Header() {
   return (
     <header className='fixed w-full z-20 top-0 flex items-center justify-between p-5 bg-gradient-to-t from-gray-200/0 via-bg-gray-900/25 to-gray-900'>

@@ -27,8 +27,8 @@ async function SearchPage({params: {term}}: SearchProps) {
         <div className="flex flex-col space-y-4 mt-32 xl:mt-42">
         <h1 className="text-6xl font-bold px-10">Results for {termToUse}</h1>
             <AISuggestion term={termToUse}/>
-            <MoviesCarousel title="Movies" videos={movies} isVertical/>
-            <MoviesCarousel title="Popular Movies you may like" videos={popularMovies}/>
+            <MoviesCarousel title="Videos" videos={movies} isVertical/>
+            <MoviesCarousel title="Videos you should watch" videos={popularMovies}/>
         </div>
     </div>
   )

@@ -44,7 +44,7 @@ const VideoDetailsPage = async ({ params: { id } }: VideoProps) => {
   }
 
   return (
-        <div className="text-white">
+    <div className="text-white">
       <div className="relative">
         <Image
           width={video.snippet_thumbnails_high_width}
@@ -55,7 +55,10 @@ const VideoDetailsPage = async ({ params: { id } }: VideoProps) => {
         />
         <div className="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black to-transparent w-full">
           <h1 className="text-4xl font-bold">{video.snippet_title}</h1>
-          <p className="mt-2">{video.snippet_description}</p>
+          <p className="mt-2">{video.snippet_description.substring(0, 100)}</p>
+          {video.snippet_description.length > 100 && (
+            <button className="text-blue-500 hover:underline">Read more</button>
+          )}
         </div>
       </div>
       <div className="p-4">
@@ -64,17 +67,15 @@ const VideoDetailsPage = async ({ params: { id } }: VideoProps) => {
         {/* Duration */}
         <p>Duration: {formatDuration(video.contentdetails_duration)}</p>
       </div>
-      <div className="p-4">
+      <div className="p-4 flex-col mx-auto items-center">
         <h2 className="text-2xl font-bold">Watch Video</h2>
-        <div className="aspect-w-16 aspect-h-9">
-          <iframe
-          className="h-96 w-full px-20"
-            src={`https://www.youtube.com/embed/${video.videoid}`}
-            title={video.snippet_description}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
+        <iframe
+          className="w-[1280px] mx-auto my-20 aspect-video"
+          src={`https://www.youtube.com/embed/${video.videoid}`}
+          title={video.snippet_description}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
       </div>
     </div>
   );

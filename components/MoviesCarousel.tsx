@@ -30,7 +30,11 @@ function MoviesCarousel({ title, videos, isVertical }: Props) {
                     {video.snippet_title} ({video.snippet_publishedat?.split("-")[0]})
                   </p>
                   <hr className="mb-3" />
-                  <p className="">{video.snippet_description}</p>
+                  <p className="mt-2">{video.snippet_description.substring(0, 200)}</p>
+          
+                  {video.snippet_description.length > 100 && (
+            <button className="text-blue-500 hover:underline">Read more</button>
+          )}
                 </div>
               </div>
             ))
