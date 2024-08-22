@@ -38,12 +38,13 @@ import { createClient } from "@/utils/supabase/server";
           <DropdownMenuLabel>Select a Genre</DropdownMenuLabel>
           <DropdownMenuSeparator />
   
-          {data.data.map((category) => (
-            <DropdownMenuItem className="cursor-pointer" key={category.id}>
+          {data.data.map((category) => (<div key = {category.id} className="cursor-pointer hover:bg-slate-700 hover:rounded-md">
               <Link href={`/genre/${category.id}?genre=${category.category_name}`}>
+            <DropdownMenuItem className="cursor-pointer" >
                 {category.category_name}
-              </Link>
             </DropdownMenuItem>
+              </Link>
+          </div>
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
