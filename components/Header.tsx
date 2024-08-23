@@ -11,7 +11,10 @@ function Header() {
         <Link href={"/"} className='mr-10'>
             <Image className='cursor-pointer invert dark:invert-0' src={"/logo.png"} alt={"AP Library"} width={100} height={100} />
         </Link>
-        <div className='flex space-x-2'>
+        <div className='flex space-x-2 items-center'>
+            <Link href={"/favourites"} className='mr-5'>
+              <p> Favourites</p>
+            </Link>
             <GenreDropdown/>
             <SearchInput/>
             <ThemeToggler/>

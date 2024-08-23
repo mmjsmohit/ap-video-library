@@ -24,6 +24,14 @@ async function fetchFromTMDB(url: URL, cacheTime?: number) {
   return data;
 }
 
+export async function fetchAllVideos() {
+  const supabase = createClient();
+  const data = (await supabase
+    .from("youtube_videos")
+    .select("*")) as YoutubeResponse;
+  return data.data;
+}
+
 export async function getDiscoverMovies(id?: string, keywords?: string) {
   const supabase = createClient();
   const data = (await supabase
