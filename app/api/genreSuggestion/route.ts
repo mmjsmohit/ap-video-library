@@ -23,7 +23,7 @@ export async function GET(request: Request) {
   const genre = searchParams.get("genre");
 
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer app-AMO5ZtcAdfihrahKMFYOEAbV");
+  myHeaders.append("Authorization", `Bearer ${process.env.DIFY_API_KEY}`);
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
