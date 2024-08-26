@@ -30,6 +30,7 @@ export async function GET(request: Request) {
   const jsonResponse = await res.json();
   const message = jsonResponse.answer;
   console.log(message);
-
+  console.log(raw);
+  console.log(res);
   return Response.json({ message });
 }
