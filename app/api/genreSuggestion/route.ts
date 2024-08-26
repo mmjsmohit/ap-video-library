@@ -44,7 +44,7 @@ export async function GET(request: Request) {
   };
 
   const res = await fetch(
-    "http://74.225.255.251/v1/chat-messages",
+    `http://${process.env.DIFY_BASE_URL}/v1/chat-messages`,
     requestOptions
   );
   const jsonResponse = await res.json();

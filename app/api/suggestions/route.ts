@@ -3,7 +3,7 @@ export async function GET(request: Request) {
   const term = searchParams.get("term");
 
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer app-AMO5ZtcAdfihrahKMFYOEAbV");
+  myHeaders.append("Authorization", `Bearer ${process.env.DIFY_API_KEY}`);
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
@@ -24,7 +24,7 @@ export async function GET(request: Request) {
   };
 
   const res = await fetch(
-    "http://74.225.255.251/v1/chat-messages",
+    `http://${process.env.DIFY_BASE_URL}/v1/chat-messages`,
     requestOptions
   );
   const jsonResponse = await res.json();
